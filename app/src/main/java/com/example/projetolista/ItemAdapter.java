@@ -30,12 +30,15 @@ public class ItemAdapter extends ArrayAdapter<Item> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(this.context);
-        convertView = inflater.inflate(R.layout.item, parent, false);
+        View rowView = inflater.inflate(R.layout.item, parent, false);
         Item i = this.elementos.get(position);
-        TextView txtTitulo = (TextView) convertView.findViewById(R.id.txtTitulo);
-        TextView txtSubtitulo = (TextView) convertView.findViewById(R.id.txtSubtitulo);
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
+        TextView txtTitulo = (TextView) rowView.findViewById(R.id.txtTitulo);
+        TextView txtSubtitulo = (TextView) rowView.findViewById(R.id.txtSubtitulo);
+        ImageView imageView = (ImageView) rowView.findViewById(R.id.imageView);
 
-        return super.getView(position, convertView, parent);
+        txtTitulo.setText(i.getTitulo());
+        txtSubtitulo.setText(i.getSubtitulo());
+
+        return rowView;
     }
 }
